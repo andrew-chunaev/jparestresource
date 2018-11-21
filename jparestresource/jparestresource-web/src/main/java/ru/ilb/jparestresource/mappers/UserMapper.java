@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 slavb.
+ * Copyright 2018 andrew.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,13 @@
  * limitations under the License.
  */
 package ru.ilb.jparestresource.mappers;
-
-import java.util.List;
 import org.mapstruct.Mapper;
-import ru.ilb.jparestresource.view.Document;
-import ru.ilb.jparestresource.view.Documents;
-
+import ru.ilb.jparestresource.view.User;
 /**
  *
- * @author slavb
+ * @author andrew
  */
-@Mapper(uses = {DocfileMapper.class, UserMapper.class}, componentModel = "spring")
-public interface DocumentMapper extends GenericMapper<ru.ilb.jparestresource.model.Document,Document>{
-
-    default Documents createWrapperFromEntities(List<ru.ilb.jparestresource.model.Document> entities) {
-        Documents documents = new Documents();
-        documents.setDocuments(createFromEntities(entities));
-        return documents;
-    }
+@Mapper(componentModel = "spring")
+public interface UserMapper extends GenericMapper<ru.ilb.jparestresource.model.User,User>{
 
 }
