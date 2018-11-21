@@ -7,7 +7,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +43,7 @@ public class Docfile implements Serializable {
     @Basic
     private String userName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Document document;
 
     public Long getId() {
@@ -53,11 +52,6 @@ public class Docfile implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Docfile withId(Long id) {
-        this.id = id;
-        return this;
     }
 
     /**
@@ -78,11 +72,6 @@ public class Docfile implements Serializable {
         this.comment = comment;
     }
 
-    public Docfile withComment(String comment) {
-        this.comment = comment;
-        return this;
-    }
-
     /**
      * Get confirmation status
      *
@@ -99,11 +88,6 @@ public class Docfile implements Serializable {
      */
     public void setConfirm(Boolean confirm) {
         this.confirm = confirm;
-    }
-
-    public Docfile withConfirm(Boolean confirm) {
-        this.confirm = confirm;
-        return this;
     }
 
     /**
@@ -124,17 +108,32 @@ public class Docfile implements Serializable {
         this.userName = userName;
     }
 
-    public Docfile withUserName(String userName) {
-        this.userName = userName;
-        return this;
-    }
-
     public Document getDocument() {
         return document;
     }
 
     public void setDocument(Document document) {
         this.document = document;
+    }
+
+    public Docfile withId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Docfile withComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public Docfile withConfirm(Boolean confirm) {
+        this.confirm = confirm;
+        return this;
+    }
+
+    public Docfile withUserName(String userName) {
+        this.userName = userName;
+        return this;
     }
 
     public Docfile withDocument(Document document) {

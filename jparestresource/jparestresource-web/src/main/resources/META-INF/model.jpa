@@ -33,10 +33,6 @@
     </jpa:entity>
     <jpa:entity lbl-ref="_148557613307718" compositePrimaryKeyClass="DocumentPK" abs="false" class="Document" v="true" jbn="false" xre="true" m="false" rootElement="_14855761330684" id="_14855761330696">
         <jpa:annotation e="true" n="@ru.ilb.common.jpa.history.AutoHistory"/>
-        <jpa:removedAttributes>
-            <jpa:i>user</jpa:i>
-            <jpa:i>users</jpa:i>
-        </jpa:removedAttributes>
         <jpa:attributes>
             <jpa:basic optional="true" attribute-type="String" v="true" xvt="E" name="displayName" id="_148557613307718">
                 <jpa:des>Document name</jpa:des>
@@ -56,7 +52,10 @@
                 <jpa:xwm nil="false" req="false"/>
                 <jpa:xm nil="false" req="false"/>
             </jpa:basic>
-            <jpa:many-to-one primaryKey="false" connected-entity-id="_154271829770918" connected-attribute-id="_154271848809030" v="true" name="user" id="_154271848808829"/>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_154271829770918" connected-attribute-id="_154271848809030" v="true" xvt="" name="user" id="_154271848808829">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
             <jpa:one-to-many orp="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330685" connected-attribute-id="_1527073199132124" v="true" xvt="" name="docfiles" id="_1527073199140125">
                 <jpa:xwm/>
                 <jpa:xm/>
@@ -86,16 +85,20 @@
             </jpa:index>
         </jpa:table>
     </jpa:entity>
-    <jpa:entity compositePrimaryKeyClass="UserPK" abs="false" class="User" pclass="Entity_1" v="true" xre="false" m="false" rootElement="_14855761330684" id="_154271829770918">
+    <jpa:entity compositePrimaryKeyClass="UserPK" abs="false" class="User" v="true" jbn="false" xre="false" m="false" rootElement="_14855761330684" id="_154271829770918">
         <jpa:ath>andrew</jpa:ath>
-        <jpa:removedAttributes>
-            <jpa:i>documents</jpa:i>
-            <jpa:i>document</jpa:i>
-        </jpa:removedAttributes>
         <jpa:attributes>
-            <jpa:basic attribute-type="String" v="true" name="displayName" pname="attribute" id="_154271831774021"/>
-            <jpa:one-to-many collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330696" connected-attribute-id="_154271848808829" v="true" name="documents" id="_154271848809030"/>
-            <jpa:id attribute-type="Long" v="true" name="id" id="_154271829771219">
+            <jpa:basic attribute-type="String" v="true" xvt="" name="displayName" id="_154271831774021">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_14855761330696" connected-attribute-id="_154271848808829" v="true" xvt="" name="documents" id="_154271848809030">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_154271829771219">
+                <jpa:xwm/>
+                <jpa:xm/>
                 <jpa:generated-value strategy="DEFAULT"/>
             </jpa:id>
         </jpa:attributes>

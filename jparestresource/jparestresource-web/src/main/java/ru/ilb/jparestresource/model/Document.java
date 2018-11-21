@@ -11,11 +11,11 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -56,9 +56,12 @@ public class Document implements Serializable {
     @Basic
     private LocalDate docDate;
 
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @CascadeOnDelete
     private Document document;
+
+    @ManyToOne
+    private User user;
 
     @OneToMany(mappedBy = "document", orphanRemoval = true, cascade = CascadeType.ALL)
     @CascadeOnDelete
@@ -71,11 +74,6 @@ public class Document implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Document withId(Long id) {
-        this.id = id;
-        return this;
     }
 
     /**
@@ -96,11 +94,6 @@ public class Document implements Serializable {
         this.displayName = displayName;
     }
 
-    public Document withDisplayName(String displayName) {
-        this.displayName = displayName;
-        return this;
-    }
-
     /**
      * Get document description
      *
@@ -117,11 +110,6 @@ public class Document implements Serializable {
      */
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Document withDescription(String description) {
-        this.description = description;
-        return this;
     }
 
     /**
@@ -142,11 +130,6 @@ public class Document implements Serializable {
         this.docDate = docDate;
     }
 
-    public Document withDocDate(LocalDate docDate) {
-        this.docDate = docDate;
-        return this;
-    }
-
     public Document getDocument() {
         return document;
     }
@@ -155,9 +138,12 @@ public class Document implements Serializable {
         this.document = document;
     }
 
-    public Document withDocument(Document document) {
-        this.document = document;
-        return this;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Docfile> getDocfiles() {
@@ -171,11 +157,6 @@ public class Document implements Serializable {
         this.docfiles = docfiles;
     }
 
-    public Document withDocfiles(List<Docfile> docfiles) {
-        this.docfiles = docfiles;
-        return this;
-    }
-
     public void addDocfile(Docfile docfile) {
         getDocfiles().add(docfile);
         docfile.setDocument(this);
@@ -184,6 +165,36 @@ public class Document implements Serializable {
     public void removeDocfile(Docfile docfile) {
         getDocfiles().remove(docfile);
         docfile.setDocument(null);
+    }
+
+    public Document withId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Document withDisplayName(String displayName) {
+        this.displayName = displayName;
+        return this;
+    }
+
+    public Document withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Document withDocDate(LocalDate docDate) {
+        this.docDate = docDate;
+        return this;
+    }
+
+    public Document withDocument(Document document) {
+        this.document = document;
+        return this;
+    }
+
+    public Document withDocfiles(List<Docfile> docfiles) {
+        this.docfiles = docfiles;
+        return this;
     }
 
 }
